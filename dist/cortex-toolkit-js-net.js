@@ -1,4 +1,4 @@
-exports["cortex-toolkit-js"] =
+exports[true] =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};

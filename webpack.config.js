@@ -6,7 +6,7 @@ module.exports = {
     ],
     output: {
         libraryTarget: 'commonjs',
-        library: 'cortex-toolkit-js',
+        library: true,
         path: __dirname + "/dist",
         filename: 'cortex-toolkit-js-net.js'
     },
