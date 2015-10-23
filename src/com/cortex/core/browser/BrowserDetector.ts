@@ -16,55 +16,56 @@
 /**
  * @classdesc       Utilitary to detect browser versions.
  */
-export default class BrowserDetector {
-    
-    private static IE_APP_NAME: string = "Microsoft Internet Explorer";
-    private static IE_11_APP_NAME: string = "Netscape";
-    private static IE_MIN_VER_NUMBER: number = 9;
-    private static IE_REGEX_VERSIONS: RegExp = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
-    private static IE_11_REGEX_VERSIONS: RegExp = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+module com.cortex.core.browser {
+    export default class BrowserDetector {
+        private static IE_APP_NAME: string = "Microsoft Internet Explorer";
+        private static IE_11_APP_NAME: string = "Netscape";
+        private static IE_MIN_VER_NUMBER: number = 9;
+        private static IE_REGEX_VERSIONS: RegExp = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+        private static IE_11_REGEX_VERSIONS: RegExp = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
 
-    constructor() {
-        /*** CONSTRUCTOR GOES HERE **/
-    }
-    /**
-     * @description     Detect if browser is internet explorer
-     *
-     * @return          {Boolean} Returns true if internet explorer else false
-     *
-     * @memberof        com.cortex.core.browsers.BrowserDetector
-     */
-    public static DetectInternetExplorer(): boolean {
-        if ((navigator.appName != null &&
-             navigator.appName === BrowserDetector.IE_APP_NAME ||
-             navigator.appName === BrowserDetector.IE_11_APP_NAME) &&
-             BrowserDetector.ExtractIEVersion() >= BrowserDetector.IE_MIN_VER_NUMBER) {
-            return true;
+        constructor() {
+            /*** CONSTRUCTOR GOES HERE **/
         }
-        return false;
-    }
-
-    /**
-     * @description     Get internet explorer versions
-     *
-     * @return          {Float} Returns internet explorer versions and -1 if not IE.
-     *
-     * @memberof        com.cortex.core.browsers.BrowserDetector
-     */
-    public static GetInternetExplorerVersion(): number {
-        if (this.DetectInternetExplorer() === true) {
-            return BrowserDetector.ExtractIEVersion();
+        /**
+         * @description     Detect if browser is internet explorer
+         *
+         * @return          {Boolean} Returns true if internet explorer else false
+         *
+         * @memberof        com.cortex.core.browsers.BrowserDetector
+         */
+        public static DetectInternetExplorer(): boolean {
+            if ((navigator.appName != null &&
+                        navigator.appName === BrowserDetector.IE_APP_NAME ||
+                        navigator.appName === BrowserDetector.IE_11_APP_NAME) &&
+                    BrowserDetector.ExtractIEVersion() >= BrowserDetector.IE_MIN_VER_NUMBER) {
+                return true;
+            }
+            return false;
         }
 
-        return -1;
-    }
+        /**
+         * @description     Get internet explorer versions
+         *
+         * @return          {Float} Returns internet explorer versions and -1 if not IE.
+         *
+         * @memberof        com.cortex.core.browsers.BrowserDetector
+         */
+        public static GetInternetExplorerVersion(): number {
+            if (this.DetectInternetExplorer() === true) {
+                return BrowserDetector.ExtractIEVersion();
+            }
 
-    private static ExtractIEVersion(): number {
-        if (BrowserDetector.IE_REGEX_VERSIONS.exec(navigator.userAgent) != null) {
-            return parseFloat(RegExp.$1);
-        } else if (BrowserDetector.IE_11_REGEX_VERSIONS.exec(navigator.userAgent) != null) {
-            return parseFloat(RegExp.$1);
+            return -1;
         }
 
+        private static ExtractIEVersion(): number {
+            if (BrowserDetector.IE_REGEX_VERSIONS.exec(navigator.userAgent) != null) {
+                return parseFloat(RegExp.$1);
+            } else if (BrowserDetector.IE_11_REGEX_VERSIONS.exec(navigator.userAgent) != null) {
+                return parseFloat(RegExp.$1);
+            }
+
+        }
     }
 }

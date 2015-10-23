@@ -10,7 +10,7 @@
 	"compilerOptions": {
 		"target": "ES5",
 		"noImplicitAny": false,
-		"declaration": false,
+		"declaration": true,
 		"module": "commonjs",
 		"removeComments": true,
 		"preserveConstEnums": true,
