@@ -4,7 +4,7 @@ Cortex Web Toolkit JS Net
 Network tools of web toolkit.
 
 0. Prerequisite
-	- NPM is install
-	- npm install -g typescript
-	- npm install -g tsd
-	- npm install -g webpack
+  - NPM is install
+
+1. Building the libs
+  - Run npm run webpack

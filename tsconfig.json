@@ -1,19 +1,21 @@
 {
-	"files":[
-		"src/com/cortex/core/browser/BrowserDetector.ts",
-        "src/com/cortex/core/net/LazyLoader.ts"
-	],
-	"exclude": [
-        "node_modules",
-        "www"
-    ],
-	"compilerOptions": {
-		"target": "ES5",
-		"noImplicitAny": false,
-		"declaration": true,
-		"module": "commonjs",
-		"removeComments": true,
-		"preserveConstEnums": true,
-		"sourceMap": false
-	}
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": false,
+    "outDir": "dist",
+    "rootDir": ".",
+    "sourceMap": false,
+    "declaration": true
+  },
+  "files": [
+    "./src/com/cortex/core/net/LazyLoader.ts",
+    "./src/com/cortex/core/browser/BrowserDetector.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
