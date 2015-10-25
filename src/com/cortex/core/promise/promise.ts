@@ -1,9 +1,9 @@
-/* tslint:disable */
 /**
 	Module P: Generic Promises for TypeScript
 
 	Project, documentation, and license: https://github.com/pragmatrix/Promise
 */
+
 module P {
 
 	/**
@@ -205,7 +205,7 @@ module P {
 		}
 
 		var resolved = 0;
-		var results:any[] = [];
+		var results = [];
 
 		promises.forEach((p, i) => {
 			p
@@ -475,10 +475,8 @@ module P {
 		std
 	*/
 
-	export function isUndefined(v:any)
+	export function isUndefined(v)
 	{
 		return typeof v === 'undefined';
 	}
 }
-
-export default P;
