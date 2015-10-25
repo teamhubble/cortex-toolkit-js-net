@@ -21,7 +21,7 @@ import P from "../promise/promise";
  */
 
 export module com.cortex.core.net {
-  class LazyLoader {
+  export class LazyLoader {
     /**
      * @memberof com.cortex.core.net.LazyLoader
      * @param {string} aFile - Path of the file to fetch

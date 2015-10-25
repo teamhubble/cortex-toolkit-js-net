@@ -3,8 +3,7 @@
   "version": "0.0.3",
   "description": "Network tools from Cortex Toolkit",
   "scripts": {
-    "webpack": "$(npm bin)/webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build_lib": "$(npm bin)/webpack"
   },
   "author": "Mathieu Rheaume <mrheaume@cortex.bz>",
   "devDependencies": {
@@ -12,6 +11,7 @@
     "typescript": "^1.6.2",
     "webpack": "^1.12.2",
     "webpack-notifier": "^1.2.1",
-    "tslint-loader": "^1.0.2"
+    "tslint-loader": "^1.0.2",
+    "ts-definitions-webpack-loader": "git+https://github.com/ddrmanxbxfr/ts-definitions-webpack-loader.git#0.0.8"
   }
 }

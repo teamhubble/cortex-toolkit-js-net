@@ -290,6 +290,7 @@ exports[true] =
 	                    };
 	                    return LazyLoader;
 	                })();
+	                net.LazyLoader = LazyLoader;
 	            })(net = core.net || (core.net = {}));
 	        })(core = cortex.core || (cortex.core = {}));
 	    })(cortex = com.cortex || (com.cortex = {}));
@@ -706,6 +707,7 @@ exports[true] =
 	                    BrowserDetector.IE_11_REGEX_VERSIONS = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
 	                    return BrowserDetector;
 	                })();
+	                browser.BrowserDetector = BrowserDetector;
 	            })(browser = core.browser || (core.browser = {}));
 	        })(core = cortex.core || (cortex.core = {}));
 	    })(cortex = com.cortex || (com.cortex = {}));

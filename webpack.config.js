@@ -4,10 +4,10 @@ var WebpackNotifierPlugin = require('webpack-notifier');
 module.exports = {
   entry: ["./src/com/cortex/core/net/LazyLoader.ts", "./src/com/cortex/core/browser/BrowserDetector.ts"],
   preLoaders: [
-    {
-      test: /\.ts$/,              
-      loader: "tslint"
-    }
+  {
+    test: /\.ts$/,              
+    loader: "tslint"
+  }
   ],
   output: {
     libraryTarget: 'commonjs',
@@ -23,11 +23,17 @@ module.exports = {
   ],
   module: {
     loaders: [
-      {
-        test: /\.ts$/,
-        exclude: /node_modules/,
-        loader: 'ts-loader',
-      }
+    {
+      test: /\.ts$/,
+      exclude: /node_modules/,
+      loader: 'ts-loader',
+    },
+    { 
+      test: /\.ts$/,
+      exclude: /node_modules/,
+      loader: 'ts-definitions-webpack-loader?output=dist/cortex-toolkit-js-net.d.ts'
+    }
+ 
     ]
   }
 };
