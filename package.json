@@ -1,6 +1,6 @@
 {
   "name": "cortex-toolkit-js-net",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Network tools from Cortex Toolkit",
   "scripts": {
     "build_lib": "$(npm bin)/webpack"
