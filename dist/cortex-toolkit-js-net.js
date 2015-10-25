@@ -294,7 +294,7 @@ exports[true] =
 	            })(net = core.net || (core.net = {}));
 	        })(core = cortex.core || (cortex.core = {}));
 	    })(cortex = com.cortex || (com.cortex = {}));
-	})(com = exports.com || (exports.com = {}));
+	})(com || (com = {}));
 
 
 /***/ },
@@ -711,7 +711,7 @@ exports[true] =
 	            })(browser = core.browser || (core.browser = {}));
 	        })(core = cortex.core || (cortex.core = {}));
 	    })(cortex = com.cortex || (com.cortex = {}));
-	})(com = exports.com || (exports.com = {}));
+	})(com || (com = {}));
 
 
 /***/ }

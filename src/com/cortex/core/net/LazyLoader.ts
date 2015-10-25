@@ -20,7 +20,7 @@ import P from "../promise/promise";
  * @classdesc Provides a simple way to use Promise with XHR Callback
  */
 
-export module com.cortex.core.net {
+module com.cortex.core.net {
   export class LazyLoader {
     /**
      * @memberof com.cortex.core.net.LazyLoader
