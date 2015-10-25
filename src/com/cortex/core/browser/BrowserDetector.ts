@@ -16,7 +16,7 @@
 /**
  * @classdesc       Utilitary to detect browser versions.
  */
-module com.cortex.core.browser {
+export module com.cortex.core.browser {
   export class BrowserDetector {
     private static IE_APP_NAME: string = "Microsoft Internet Explorer";
     private static IE_11_APP_NAME: string = "Netscape";

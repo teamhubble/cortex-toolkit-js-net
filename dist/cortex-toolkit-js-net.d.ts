@@ -1,3 +1,16 @@
+import * as P from "../promise/promise";
+declare module com.cortex.core.net {
+    class LazyLoader {
+        static loadJSON(aFile: string, aApiToken?: string, aDatastoreObject?: any): P.Promise<any>;
+        static loadFile(aFile: string): P.Promise<any>;
+        static loadTemplate(aFile: string): P.Promise<any>;
+        static sendJSON(aFile: string, aJsonObject: any, aSyncOrNot?: boolean, aApiToken?: any): P.Promise<any>;
+        static updateJSON(aFile: string, aJsonObject: any, aSyncOrNot?: boolean, aApiToken?: any): P.Promise<any>;
+        static deleteRequest(aFile: string, aJsonObject: any, aSyncOrNot?: boolean, aApiToken?: any): P.Promise<any>;
+        static handleXHRReponse(requestObject: XMLHttpRequest, aDeferObject: any): any;
+        private static getXHRObject(aHttpOperation, aFile, aSyncOrNot?, aApiToken?);
+    }
+}
 
 declare module com.cortex.core.browser {
     class BrowserDetector {
@@ -60,6 +73,6 @@ declare module P {
     function generator<E>(g: () => () => Promise<E>): Generator<E>;
     function iterator<E>(f: () => Promise<E>): Iterator<E>;
     function each<E>(gen: Generator<E>, f: (e: E) => void): Promise<{}>;
-    function isUndefined(v: any): boolean;
+    function isUndefined(v: any): any;
 }
-export default P;
+export = P;

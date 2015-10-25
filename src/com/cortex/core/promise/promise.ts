@@ -205,7 +205,7 @@ module P {
 		}
 
 		var resolved = 0;
-		var results = [];
+		var results: any[] = [];
 
 		promises.forEach((p, i) => {
 			p
@@ -475,8 +475,10 @@ module P {
 		std
 	*/
 
-	export function isUndefined(v)
+	export function isUndefined(v: any): any
 	{
 		return typeof v === 'undefined';
 	}
 }
+
+export = P;

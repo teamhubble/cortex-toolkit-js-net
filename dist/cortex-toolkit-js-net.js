@@ -68,7 +68,7 @@ exports[true] =
 	 *
 	 * @author Mathieu Rhéaume
 	 */
-	var promise_1 = __webpack_require__(2);
+	var P = __webpack_require__(2);
 	/**
 	 * @classdesc Provides a simple way to use Promise with XHR Callback
 	 */
@@ -90,7 +90,7 @@ exports[true] =
 	                     * @param {object} aDatastoreObject - A Datastore object to cache the XHR Response.
 	                     */
 	                    LazyLoader.loadJSON = function (aFile, aApiToken, aDatastoreObject) {
-	                        var deferObject = promise_1.default.defer();
+	                        var deferObject = P.defer();
 	                        if (aDatastoreObject != null && aDatastoreObject.get(aFile) != null) {
 	                            deferObject.resolve(aDatastoreObject.get(aFile));
 	                        }
@@ -149,7 +149,7 @@ exports[true] =
 	                     * @param {string} aFile - Path of the file to fetch
 	                     */
 	                    LazyLoader.loadFile = function (aFile) {
-	                        var deferObject = promise_1.default.defer(), xhr = new XMLHttpRequest();
+	                        var deferObject = P.defer(), xhr = new XMLHttpRequest();
 	                        xhr.open("GET", aFile, true);
 	                        xhr.onerror = function (error) {
 	                            deferObject.reject(error);
@@ -178,7 +178,7 @@ exports[true] =
 	                     * @param {string} aFile - Path of the file to fetch
 	                     */
 	                    LazyLoader.loadTemplate = function (aFile) {
-	                        var deferObject = promise_1.default.defer(), xhr = new XMLHttpRequest();
+	                        var deferObject = P.defer(), xhr = new XMLHttpRequest();
 	                        xhr.open("GET", aFile, true);
 	                        xhr.onerror = function (error) {
 	                            deferObject.reject(error);
@@ -203,7 +203,7 @@ exports[true] =
 	                     * @param {string} aApiToken - Token to use in autorization header.
 	                     */
 	                    LazyLoader.sendJSON = function (aFile, aJsonObject, aSyncOrNot, aApiToken) {
-	                        var deferObject = promise_1.default.defer(), xhr = this.getXHRObject("POST", aFile, aSyncOrNot, aApiToken);
+	                        var deferObject = P.defer(), xhr = this.getXHRObject("POST", aFile, aSyncOrNot, aApiToken);
 	                        xhr.onerror = function (error) {
 	                            deferObject.reject(error);
 	                        };
@@ -223,7 +223,7 @@ exports[true] =
 	                     * @param {string} aApiToken - Token to use in autorization header.
 	                     */
 	                    LazyLoader.updateJSON = function (aFile, aJsonObject, aSyncOrNot, aApiToken) {
-	                        var deferObject = promise_1.default.defer(), xhr = this.getXHRObject("PUT", aFile, aSyncOrNot, aApiToken);
+	                        var deferObject = P.defer(), xhr = this.getXHRObject("PUT", aFile, aSyncOrNot, aApiToken);
 	                        xhr.onerror = function (error) {
 	                            deferObject.reject(error);
 	                        };
@@ -234,7 +234,7 @@ exports[true] =
 	                        return deferObject.promise();
 	                    };
 	                    LazyLoader.deleteRequest = function (aFile, aJsonObject, aSyncOrNot, aApiToken) {
-	                        var deferObject = promise_1.default.defer();
+	                        var deferObject = P.defer();
 	                        var xhr = this.getXHRObject("DELETE", aFile, aSyncOrNot, aApiToken);
 	                        xhr.onerror = function (error) {
 	                            deferObject.reject(error);
@@ -294,14 +294,13 @@ exports[true] =
 	            })(net = core.net || (core.net = {}));
 	        })(core = cortex.core || (cortex.core = {}));
 	    })(cortex = com.cortex || (com.cortex = {}));
-	})(com || (com = {}));
+	})(com = exports.com || (exports.com = {}));
 
 
 /***/ },
 /* 2 */
 /***/ function(module, exports) {
 
-	/* tslint:disable */
 	/**
 	    Module P: Generic Promises for TypeScript
 
@@ -625,8 +624,7 @@ exports[true] =
 	    }
 	    P.isUndefined = isUndefined;
 	})(P || (P = {}));
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = P;
+	module.exports = P;
 
 
 /***/ },
@@ -711,7 +709,7 @@ exports[true] =
 	            })(browser = core.browser || (core.browser = {}));
 	        })(core = cortex.core || (cortex.core = {}));
 	    })(cortex = com.cortex || (com.cortex = {}));
-	})(com || (com = {}));
+	})(com = exports.com || (exports.com = {}));
 
 
 /***/ }

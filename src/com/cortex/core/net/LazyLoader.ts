@@ -14,13 +14,13 @@
  * @author Mathieu Rhéaume
  */
 
-import P from "../promise/promise";
+import * as P from "../promise/promise";
 
 /**
  * @classdesc Provides a simple way to use Promise with XHR Callback
  */
 
-module com.cortex.core.net {
+export module com.cortex.core.net {
   export class LazyLoader {
     /**
      * @memberof com.cortex.core.net.LazyLoader
@@ -248,7 +248,7 @@ module com.cortex.core.net {
          * @param {boolean} aSyncOrNot - Execute the request in sync or async mode.
          * @param {string} aApiToken - Token to use in autorization header.
          */
-            private static getXHRObject (aHttpOperation: string, aFile: string, aSyncOrNot?: boolean, aApiToken?: string): XMLHttpRequest {
+        private static getXHRObject (aHttpOperation: string, aFile: string, aSyncOrNot?: boolean, aApiToken?: string): XMLHttpRequest {
               var xhr = new XMLHttpRequest;
               xhr.open(aHttpOperation, aFile, aSyncOrNot);
 
