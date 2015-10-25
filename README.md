@@ -7,7 +7,5 @@ Network tools of web toolkit.
   - NPM is install
 
 1. Building the stuff
-  - Lib only : npm run build_lib
-  - TS Definitions only : npm run pack_definitions
-  - Full build : npm run full_build
+  - npm run build_lib
 
