@@ -3,10 +3,11 @@
   "version": "0.0.5",
   "description": "Network tools from Cortex Toolkit",
   "scripts": {
-      "build": "$(npm bin)/tsc"
+    "build": "$(npm bin)/tsc"
   },
   "author": "Mathieu Rheaume <mrheaume@cortex.bz>",
   "devDependencies": {
+    "tsd": "^0.6.5",
     "typescript": "1.8.0-dev.20151027"
   },
   "main": "dist/index.js",

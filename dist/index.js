@@ -1,7 +1,6 @@
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
 // Export stuff from sub modules
 //
-__export(require("./net/LazyLoader"));
-__export(require("./net/BrowserDetector"));
+var LazyLoader_1 = require("./net/LazyLoader");
+exports.LazyLoader = LazyLoader_1.default;
+var BrowserDetector_1 = require("./net/BrowserDetector");
+exports.BrowserDetector = BrowserDetector_1.default;
