@@ -6,16 +6,17 @@
     "module": "commonjs",
     "target": "es5",
     "noImplicitAny": false,
-    "outDir": "dist",
+    "outDir": "../dist",
+    "noLib": false,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true,
     "rootDir": ".",
     "sourceMap": false,
     "declaration": true
   },
   "files": [
-    "./src/com/cortex/core/net/LazyLoader.ts",
-    "./src/com/cortex/core/browser/BrowserDetector.ts"
-  ],
-  "exclude": [
-    "node_modules"
+    "./net/LazyLoader.ts",
+    "./net/BrowserDetector.ts",
+    "./index.ts"
   ]
 }

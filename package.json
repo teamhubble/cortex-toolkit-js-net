@@ -3,18 +3,13 @@
   "version": "0.0.4",
   "description": "Network tools from Cortex Toolkit",
   "scripts": {
-    "build_lib": "$(npm bin)/webpack"
   },
   "author": "Mathieu Rheaume <mrheaume@cortex.bz>",
   "devDependencies": {
-    "ts-loader": "^0.5.6",
-    "typescript": "^1.6.2",
-    "webpack": "^1.12.2",
-    "webpack-notifier": "^1.2.1",
-    "tslint-loader": "^1.0.2",
-    "ts-definitions-webpack-loader": "git+https://github.com/ddrmanxbxfr/ts-definitions-webpack-loader.git"
+    "typescript": "1.8.0-dev.20151027"
   },
+  "main": "dist/index.js",
   "typescript":{
-    "definition":"dist/cortex-toolkit-js-net.d.ts"
+    "definition":"dist/index.d.ts"
   }
 }

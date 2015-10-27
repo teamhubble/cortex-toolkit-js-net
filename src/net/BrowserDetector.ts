@@ -16,8 +16,7 @@
 /**
  * @classdesc       Utilitary to detect browser versions.
  */
-export module com.cortex.core.browser {
-  export class BrowserDetector {
+export class BrowserDetector {
     private static IE_APP_NAME: string = "Microsoft Internet Explorer";
     private static IE_11_APP_NAME: string = "Netscape";
     private static IE_MIN_VER_NUMBER: number = 9;
@@ -25,7 +24,7 @@ export module com.cortex.core.browser {
     private static IE_11_REGEX_VERSIONS: RegExp = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
 
     constructor() {
-      /*** CONSTRUCTOR GOES HERE **/
+        /*** CONSTRUCTOR GOES HERE **/
     }
     /**
      * @description     Detect if browser is internet explorer
@@ -35,13 +34,13 @@ export module com.cortex.core.browser {
      * @memberof        com.cortex.core.browsers.BrowserDetector
      */
     public static DetectInternetExplorer(): boolean {
-      if ((navigator.appName != null &&
-            navigator.appName === BrowserDetector.IE_APP_NAME ||
-            navigator.appName === BrowserDetector.IE_11_APP_NAME) &&
-          BrowserDetector.ExtractIEVersion() >= BrowserDetector.IE_MIN_VER_NUMBER) {
-        return true;
-      }
-      return false;
+        if ((navigator.appName != null &&
+                    navigator.appName === BrowserDetector.IE_APP_NAME ||
+                    navigator.appName === BrowserDetector.IE_11_APP_NAME) &&
+                BrowserDetector.ExtractIEVersion() >= BrowserDetector.IE_MIN_VER_NUMBER) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -52,20 +51,18 @@ export module com.cortex.core.browser {
      * @memberof        com.cortex.core.browsers.BrowserDetector
      */
     public static GetInternetExplorerVersion(): number {
-      if (this.DetectInternetExplorer() === true) {
-        return BrowserDetector.ExtractIEVersion();
-      }
+        if (this.DetectInternetExplorer() === true) {
+            return BrowserDetector.ExtractIEVersion();
+        }
 
-      return -1;
+        return -1;
     }
 
     private static ExtractIEVersion(): number {
-      if (BrowserDetector.IE_REGEX_VERSIONS.exec(navigator.userAgent) != null) {
-        return parseFloat(RegExp.$1);
-      } else if (BrowserDetector.IE_11_REGEX_VERSIONS.exec(navigator.userAgent) != null) {
-        return parseFloat(RegExp.$1);
-      }
-
+        if (BrowserDetector.IE_REGEX_VERSIONS.exec(navigator.userAgent) != null) {
+            return parseFloat(RegExp.$1);
+        } else if (BrowserDetector.IE_11_REGEX_VERSIONS.exec(navigator.userAgent) != null) {
+            return parseFloat(RegExp.$1);
+        }
     }
-  }
 }
