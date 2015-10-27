@@ -4,7 +4,7 @@
   "description": "Network tools from Cortex Toolkit",
   "scripts": {
     "build": "$(npm bin)/tsc",
-    "lint": "$(npm bin)/jake lint"
+    "lint": "$(npm bin)/jake -f jakefile.js lint"
   },
   "author": "Mathieu Rheaume <mrheaume@cortex.bz>",
   "devDependencies": {

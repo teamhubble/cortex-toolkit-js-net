@@ -19,6 +19,7 @@ task('lint', { async: true }, function () {
         var file;
         for (var i in files) {
             file = files[i];
+            console.log('linting ' + file);
             lintFile(file);
         }
         complete();
