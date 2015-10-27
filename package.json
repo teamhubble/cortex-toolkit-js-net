@@ -3,11 +3,15 @@
   "version": "0.0.5",
   "description": "Network tools from Cortex Toolkit",
   "scripts": {
-    "build": "$(npm bin)/tsc"
+    "build": "$(npm bin)/tsc",
+    "lint": "$(npm bin)/jake lint"
   },
   "author": "Mathieu Rheaume <mrheaume@cortex.bz>",
   "devDependencies": {
+    "glob": "^5.0.15",
+    "jake": "^8.0.12",
     "tsd": "^0.6.5",
+    "tslint": "^2.5.1",
     "typescript": "1.8.0-dev.20151027"
   },
   "main": "dist/index.js",

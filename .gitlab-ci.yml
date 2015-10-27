@@ -1,0 +1,9 @@
+image: 4.2.1-onbuild
+
+compile:
+    script:
+        - npm run build
+
+lint:
+    script:
+        - npm run lint

@@ -9,3 +9,5 @@ Network tools of web toolkit.
 1. Building the stuff
   - npm run build_lib
 
+2. Linting
+  - npm run lint
