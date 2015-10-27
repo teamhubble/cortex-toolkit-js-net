@@ -16,7 +16,7 @@
 /**
  * @classdesc       Utilitary to detect browser versions.
  */
-export declare class BrowserDetector {
+export default class BrowserDetector {
     private static IE_APP_NAME;
     private static IE_11_APP_NAME;
     private static IE_MIN_VER_NUMBER;

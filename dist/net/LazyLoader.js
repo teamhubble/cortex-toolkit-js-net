@@ -28,7 +28,6 @@ var LazyLoader = (function () {
      */
     LazyLoader.loadJSON = function (aFile, aApiToken, aDatastoreObject) {
         var deferObject = P.defer();
-        var dummyStr = "";
         if (aDatastoreObject != null && aDatastoreObject.get(aFile) != null) {
             deferObject.resolve(aDatastoreObject.get(aFile));
         }
@@ -228,4 +227,5 @@ var LazyLoader = (function () {
     };
     return LazyLoader;
 })();
-exports.LazyLoader = LazyLoader;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = LazyLoader;

@@ -64,4 +64,5 @@ var BrowserDetector = (function () {
     BrowserDetector.IE_11_REGEX_VERSIONS = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
     return BrowserDetector;
 })();
-exports.BrowserDetector = BrowserDetector;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = BrowserDetector;

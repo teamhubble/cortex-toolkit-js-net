@@ -6,17 +6,17 @@
     "module": "commonjs",
     "target": "es5",
     "noImplicitAny": false,
-    "outDir": "../dist",
+    "outDir": "dist",
+    "rootDir": "./src",
     "noLib": false,
     "preserveConstEnums": true,
     "suppressImplicitAnyIndexErrors": true,
-    "rootDir": ".",
     "sourceMap": false,
     "declaration": true
   },
   "files": [
-    "./net/LazyLoader.ts",
-    "./net/BrowserDetector.ts",
-    "./index.ts"
+    "./src/net/LazyLoader.ts",
+    "./src/net/BrowserDetector.ts",
+    "./src/index.ts"
   ]
 }

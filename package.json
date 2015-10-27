@@ -1,15 +1,14 @@
 {
   "name": "cortex-toolkit-js-net",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Network tools from Cortex Toolkit",
   "scripts": {
+      "build": "$(npm bin)/tsc"
   },
   "author": "Mathieu Rheaume <mrheaume@cortex.bz>",
   "devDependencies": {
     "typescript": "1.8.0-dev.20151027"
   },
   "main": "dist/index.js",
-  "typescript":{
-    "definition":"dist/index.d.ts"
-  }
+  "typings": "dist/index"
 }

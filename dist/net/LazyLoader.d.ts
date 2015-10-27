@@ -17,7 +17,7 @@ import * as P from "./promise";
 /**
  * @classdesc Provides a simple way to use Promise with XHR Callback
  */
-export declare class LazyLoader {
+export default class LazyLoader {
     /**
      * @memberof com.cortex.core.net.LazyLoader
      * @param {string} aFile - Path of the file to fetch
