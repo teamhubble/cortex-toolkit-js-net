@@ -1,4 +1,4 @@
-image: 4.2.1-onbuild
+image: node:4.2.1-onbuild
 
 compile:
     script:
