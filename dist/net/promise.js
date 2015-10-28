@@ -1,40 +1,41 @@
+/* tslint:disable */
 /**
-    Module P: Generic Promises for TypeScript
+  Module P: Generic Promises for TypeScript
 
-    Project, documentation, and license: https://github.com/pragmatrix/Promise
-*/
+  Project, documentation, and license: https://github.com/pragmatrix/Promise
+ */
 var P;
 (function (P) {
     /**
-        Returns a new "Deferred" value that may be resolved or rejected.
-    */
+      Returns a new "Deferred" value that may be resolved or rejected.
+     */
     function defer() {
         return new DeferredI();
     }
     P.defer = defer;
     /**
-        Converts a value to a resolved promise.
-    */
+      Converts a value to a resolved promise.
+     */
     function resolve(v) {
         return defer().resolve(v).promise();
     }
     P.resolve = resolve;
     /**
-        Returns a rejected promise.
-    */
+      Returns a rejected promise.
+     */
     function reject(err) {
         return defer().reject(err).promise();
     }
     P.reject = reject;
     /**
-        http://en.wikipedia.org/wiki/Anamorphism
+      http://en.wikipedia.org/wiki/Anamorphism
 
-        Given a seed value, unfold calls the unspool function, waits for the returned promise to be resolved, and then
-        calls it again if a next seed value was returned.
+      Given a seed value, unfold calls the unspool function, waits for the returned promise to be resolved, and then
+      calls it again if a next seed value was returned.
 
-        All the values of all promise results are collected into the resulting promise which is resolved as soon
-        the last generated element value is resolved.
-    */
+      All the values of all promise results are collected into the resulting promise which is resolved as soon
+      the last generated element value is resolved.
+     */
     function unfold(unspool, seed) {
         var d = defer();
         var elements = new Array();
@@ -60,22 +61,24 @@ var P;
         result.promise
             .done(function (v) {
             elements.push(v);
-            if (!result.next)
+            if (!result.next) {
                 deferred.resolve(elements);
-            else
+            }
+            else {
                 unfoldCore(elements, deferred, unspool, result.next);
+            }
         })
             .fail(function (e) {
             deferred.reject(e);
         });
     }
     /**
-        The status of a Promise. Initially a Promise is Unfulfilled and may
-        change to Rejected or Resolved.
-     
-        Once a promise is either Rejected or Resolved, it can not change its
-        status anymore.
-    */
+      The status of a Promise. Initially a Promise is Unfulfilled and may
+      change to Rejected or Resolved.
+
+      Once a promise is either Rejected or Resolved, it can not change its
+      status anymore.
+     */
     (function (Status) {
         Status[Status["Unfulfilled"] = 0] = "Unfulfilled";
         Status[Status["Rejected"] = 1] = "Rejected";
@@ -83,10 +86,10 @@ var P;
     })(P.Status || (P.Status = {}));
     var Status = P.Status;
     /**
-        Creates a promise that gets resolved when all the promises in the argument list get resolved.
-        As soon one of the arguments gets rejected, the resulting promise gets rejected.
-        If no promises were provided, the resulting promise is immediately resolved.
-    */
+      Creates a promise that gets resolved when all the promises in the argument list get resolved.
+      As soon one of the arguments gets rejected, the resulting promise gets rejected.
+      If no promises were provided, the resulting promise is immediately resolved.
+     */
     function when() {
         var promises = [];
         for (var _i = 0; _i < arguments.length; _i++) {
@@ -104,22 +107,24 @@ var P;
                 .done(function (v) {
                 results[i] = v;
                 ++resolved;
-                if (resolved === promises.length && allDone.status !== Status.Rejected)
+                if (resolved === promises.length && allDone.status !== Status.Rejected) {
                     allDone.resolve(results);
+                }
             })
                 .fail(function (e) {
-                if (allDone.status !== Status.Rejected)
+                if (allDone.status !== Status.Rejected) {
                     allDone.reject(new Error("when: one or more promises were rejected"));
+                }
             });
         });
         return allDone.promise();
     }
     P.when = when;
     /**
-        Implementation of a promise.
+      Implementation of a promise.
 
-        The Promise<Value> instance is a proxy to the Deferred<Value> instance.
-    */
+      The Promise<Value> instance is a proxy to the Deferred<Value> instance.
+     */
     var PromiseI = (function () {
         function PromiseI(deferred) {
             this.deferred = deferred;
@@ -157,8 +162,8 @@ var P;
         return PromiseI;
     })();
     /**
-        Implementation of a deferred.
-    */
+      Implementation of a deferred.
+     */
     var DeferredI = (function () {
         function DeferredI() {
             this._resolved = function (_) { };
@@ -179,8 +184,9 @@ var P;
         });
         Object.defineProperty(DeferredI.prototype, "result", {
             get: function () {
-                if (this._status != Status.Resolved)
+                if (this._status != Status.Resolved) {
                     throw new Error("Promise: result not available");
+                }
                 return this._result;
             },
             enumerable: true,
@@ -188,8 +194,9 @@ var P;
         });
         Object.defineProperty(DeferredI.prototype, "error", {
             get: function () {
-                if (this._status != Status.Rejected)
+                if (this._status != Status.Rejected) {
                     throw new Error("Promise: rejection reason not available");
+                }
                 return this._error;
             },
             enumerable: true,
@@ -201,7 +208,7 @@ var P;
                 .done(function (v) {
                 var promiseOrValue = f(v);
                 // todo: need to find another way to check if r is really of interface
-                // type Promise<any>, otherwise we would not support other 
+                // type Promise<any>, otherwise we would not support other
                 // implementations here.
                 if (promiseOrValue instanceof PromiseI) {
                     var p = promiseOrValue;
@@ -219,8 +226,9 @@ var P;
                 f(this._result);
                 return this;
             }
-            if (this.status !== Status.Unfulfilled)
+            if (this.status !== Status.Unfulfilled) {
                 return this;
+            }
             var prev = this._resolved;
             this._resolved = function (v) { prev(v); f(v); };
             return this;
@@ -230,8 +238,9 @@ var P;
                 f(this._error);
                 return this;
             }
-            if (this.status !== Status.Unfulfilled)
+            if (this.status !== Status.Unfulfilled) {
                 return this;
+            }
             var prev = this._rejected;
             this._rejected = function (e) { prev(e); f(e); };
             return this;
@@ -243,8 +252,9 @@ var P;
             return this;
         };
         DeferredI.prototype.resolve = function (result) {
-            if (this._status !== Status.Unfulfilled)
+            if (this._status !== Status.Unfulfilled) {
                 throw new Error("tried to resolve a fulfilled promise");
+            }
             this._result = result;
             this._status = Status.Resolved;
             this._resolved(result);
@@ -252,8 +262,9 @@ var P;
             return this;
         };
         DeferredI.prototype.reject = function (err) {
-            if (this._status !== Status.Unfulfilled)
+            if (this._status !== Status.Unfulfilled) {
                 throw new Error("tried to reject a fulfilled promise");
+            }
             this._error = err;
             this._status = Status.Rejected;
             this._rejected(err);
@@ -284,8 +295,9 @@ var P;
             var _this = this;
             var res = this.f();
             return res.then(function (value) {
-                if (isUndefined(value))
+                if (isUndefined(value)) {
                     return false;
+                }
                 _this.current = value;
                 return true;
             });
@@ -293,8 +305,8 @@ var P;
         return IteratorI;
     })();
     /**
-        Iterator functions.
-    */
+      Iterator functions.
+     */
     function each(gen, f) {
         var d = defer();
         eachCore(d, gen(), f);
@@ -314,10 +326,10 @@ var P;
             .fail(function (err) { return fin.reject(err); });
     }
     /**
-        std
-    */
+      std
+     */
     function isUndefined(v) {
-        return typeof v === 'undefined';
+        return typeof v === "undefined";
     }
     P.isUndefined = isUndefined;
 })(P || (P = {}));

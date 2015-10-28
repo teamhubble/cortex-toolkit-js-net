@@ -1,0 +1,12 @@
+image: node:4.2.1-onbuild
+
+before_script:
+    - npm install
+
+compile:
+    script:
+        - npm run build
+
+lint:
+    script:
+        - npm run lint

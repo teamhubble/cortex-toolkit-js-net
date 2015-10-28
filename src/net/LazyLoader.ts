@@ -241,7 +241,10 @@ export default class LazyLoader {
              * @param {boolean} aSyncOrNot - Execute the request in sync or async mode.
              * @param {string} aApiToken - Token to use in autorization header.
              */
-                    private static getXHRObject (aHttpOperation: string, aFile: string, aSyncOrNot?: boolean, aApiToken?: string): XMLHttpRequest {
+                    private static getXHRObject (aHttpOperation: string,
+                    aFile: string,
+                    aSyncOrNot?: boolean,
+                    aApiToken?: string): XMLHttpRequest {
                         var xhr = new XMLHttpRequest;
                         xhr.open(aHttpOperation, aFile, aSyncOrNot);
 
