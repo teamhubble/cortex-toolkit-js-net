@@ -1,25 +1,25 @@
 /***
- *
- * Provides a simple way to use Promise with XHR Callback
- *
- * @copyright Cortex Media 2015
- *
- * @author Mathieu Rhéaume
- *
- */
+*
+* Provides a simple way to use Promise with XHR Callback
+*
+* @copyright Cortex Media 2015
+*
+* @author Mathieu Rhéaume
+*
+*/
 var P = require("./promise");
 /**
- * @classdesc Provides a simple way to use Promise with XHR Callback
- */
+* @classdesc Provides a simple way to use Promise with XHR Callback
+*/
 var LazyLoader = (function () {
     function LazyLoader() {
     }
     /**
-     * @memberof com.cortex.core.net.LazyLoader
-     * @param {string} aFile - Path of the file to fetch
-     * @param {string} aApiToken - Token to add in Autorization header if used in beaver token
-     * @param {object} aDatastoreObject - A Datastore object to cache the XHR Response.
-     */
+    * @memberof com.cortex.core.net.LazyLoader
+    * @param {string} aFile - Path of the file to fetch
+    * @param {string} aApiToken - Token to add in Autorization header if used in beaver token
+    * @param {object} aDatastoreObject - A Datastore object to cache the XHR Response.
+    */
     LazyLoader.loadJSON = function (aFile, aApiToken, aDatastoreObject) {
         var deferObject = P.defer();
         if (aDatastoreObject != null && aDatastoreObject.get(aFile) != null) {
@@ -76,9 +76,9 @@ var LazyLoader = (function () {
         return deferObject.promise();
     };
     /**
-     * @memberof com.cortex.core.net.LazyLoader
-     * @param {string} aFile - Path of the file to fetch
-     */
+    * @memberof com.cortex.core.net.LazyLoader
+    * @param {string} aFile - Path of the file to fetch
+    */
     LazyLoader.loadFile = function (aFile) {
         var deferObject = P.defer(), xhr = new XMLHttpRequest();
         xhr.open("GET", aFile, true);
@@ -105,9 +105,9 @@ var LazyLoader = (function () {
         return deferObject.promise();
     };
     /**
-     * @memberof com.cortex.core.net.LazyLoader
-     * @param {string} aFile - Path of the file to fetch
-     */
+    * @memberof com.cortex.core.net.LazyLoader
+    * @param {string} aFile - Path of the file to fetch
+    */
     LazyLoader.loadTemplate = function (aFile) {
         var deferObject = P.defer(), xhr = new XMLHttpRequest();
         xhr.open("GET", aFile, true);
@@ -127,12 +127,12 @@ var LazyLoader = (function () {
         return deferObject.promise();
     };
     /**
-     * @memberof com.cortex.core.net.LazyLoader
-     * @param {string} aFile - Path of the file to fetch
-     * @param {object} aJsonObject - Json object to send
-     * @param {boolean} aSyncOrNot - Execute the request in sync or async mode.
-     * @param {string} aApiToken - Token to use in autorization header.
-     */
+    * @memberof com.cortex.core.net.LazyLoader
+    * @param {string} aFile - Path of the file to fetch
+    * @param {object} aJsonObject - Json object to send
+    * @param {boolean} aSyncOrNot - Execute the request in sync or async mode.
+    * @param {string} aApiToken - Token to use in autorization header.
+    */
     LazyLoader.sendJSON = function (aFile, aJsonObject, aSyncOrNot, aApiToken) {
         var deferObject = P.defer(), xhr = this.getXHRObject("POST", aFile, aSyncOrNot, aApiToken);
         xhr.onerror = function (error) {
@@ -145,14 +145,14 @@ var LazyLoader = (function () {
         return deferObject.promise();
     };
     /**
-     * Realise a PUT (UPDATE) Operation from a provided Json Object.
-     *
-     * @memberof com.cortex.core.net.LazyLoader
-     * @param {string} aFile - Path of the file to fetch
-     * @param {any} aJsonObject - JSON Object to send.
-     * @param {boolean} aSyncOrNot - Execute the request in sync or async mode.
-     * @param {string} aApiToken - Token to use in autorization header.
-     */
+    * Realise a PUT (UPDATE) Operation from a provided Json Object.
+    *
+    * @memberof com.cortex.core.net.LazyLoader
+    * @param {string} aFile - Path of the file to fetch
+    * @param {any} aJsonObject - JSON Object to send.
+    * @param {boolean} aSyncOrNot - Execute the request in sync or async mode.
+    * @param {string} aApiToken - Token to use in autorization header.
+    */
     LazyLoader.updateJSON = function (aFile, aJsonObject, aSyncOrNot, aApiToken) {
         var deferObject = P.defer(), xhr = this.getXHRObject("PUT", aFile, aSyncOrNot, aApiToken);
         xhr.onerror = function (error) {
@@ -184,16 +184,16 @@ var LazyLoader = (function () {
         xhr.onload = function () {
             deferObject.resolve(xhr.status);
         };
-        xhr.send();
+        xhr.send(JSON.stringify(aJsonObject));
         return deferObject.promise();
     };
     /**
-     * Handles callback from XHR Query and Parse the JSON from query...
-     *
-     * @memberof com.cortex.core.net.LazyLoader
-     * @param {XMLHttpRequest} aXhrObject - Object used to do the query
-     * @param {Defer} aDeferObject - Object from promise your currently running...
-     */
+    * Handles callback from XHR Query and Parse the JSON from query...
+    *
+    * @memberof com.cortex.core.net.LazyLoader
+    * @param {XMLHttpRequest} aXhrObject - Object used to do the query
+    * @param {Defer} aDeferObject - Object from promise your currently running...
+    */
     LazyLoader.handleXHRReponse = function (requestObject, aDeferObject) {
         var requestResponse = requestObject.response;
         if (requestResponse !== null) {
@@ -212,14 +212,14 @@ var LazyLoader = (function () {
         }
     };
     /**
-     * Initialize a XMLHttpRequest object with the required headers for a JSON Object Operation
-     *
-     * @memberof com.cortex.core.net.LazyLoader
-     * @param {string} aHttpOperation - HTTP Operation to do
-     * @param {string} aFile - Path of the file to fetch
-     * @param {boolean} aSyncOrNot - Execute the request in sync or async mode.
-     * @param {string} aApiToken - Token to use in autorization header.
-     */
+    * Initialize a XMLHttpRequest object with the required headers for a JSON Object Operation
+    *
+    * @memberof com.cortex.core.net.LazyLoader
+    * @param {string} aHttpOperation - HTTP Operation to do
+    * @param {string} aFile - Path of the file to fetch
+    * @param {boolean} aSyncOrNot - Execute the request in sync or async mode.
+    * @param {string} aApiToken - Token to use in autorization header.
+    */
     LazyLoader.getXHRObject = function (aHttpOperation, aFile, aSyncOrNot, aApiToken) {
         var xhr = new XMLHttpRequest;
         xhr.open(aHttpOperation, aFile, aSyncOrNot);
