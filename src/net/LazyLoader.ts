@@ -189,6 +189,25 @@ export default class LazyLoader {
                         return deferObject.promise();
                     }
 
+                    public static patchJSON(aFile: string,
+                        aJsonObject: any,
+                        aSyncOrNot?: boolean,
+                        aApiToken?: any): P.Promise<any> {
+                        var deferObject: P.Deferred<any> = P.defer<any>(),
+                            xhr = this.getXHRObject("PATCH", aFile, aSyncOrNot, aApiToken);
+
+                        xhr.onerror = function(error) {
+                            deferObject.reject(<any>error);
+                        };
+
+                        xhr.onload = function() {
+                            LazyLoader.handleXHRReponse(xhr, deferObject);
+                        };
+
+                        xhr.send(JSON.stringify(aJsonObject));
+                        return deferObject.promise();
+                    }
+
                 public static deleteRequest(aFile: string,
                 aJsonObject: any,
                 aSyncOrNot?: boolean,
