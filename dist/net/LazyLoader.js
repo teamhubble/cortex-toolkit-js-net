@@ -164,6 +164,17 @@ var LazyLoader = (function () {
         xhr.send(JSON.stringify(aJsonObject));
         return deferObject.promise();
     };
+    LazyLoader.patchJSON = function (aFile, aJsonObject, aSyncOrNot, aApiToken) {
+        var deferObject = P.defer(), xhr = this.getXHRObject("PATCH", aFile, aSyncOrNot, aApiToken);
+        xhr.onerror = function (error) {
+            deferObject.reject(error);
+        };
+        xhr.onload = function () {
+            LazyLoader.handleXHRReponse(xhr, deferObject);
+        };
+        xhr.send(JSON.stringify(aJsonObject));
+        return deferObject.promise();
+    };
     LazyLoader.deleteRequest = function (aFile, aJsonObject, aSyncOrNot, aApiToken) {
         var deferObject = P.defer();
         var xhr = this.getXHRObject("DELETE", aFile, aSyncOrNot, aApiToken);

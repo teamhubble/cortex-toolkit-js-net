@@ -47,6 +47,7 @@ export default class LazyLoader {
      * @param {string} aApiToken - Token to use in autorization header.
      */
     static updateJSON(aFile: string, aJsonObject: any, aSyncOrNot?: boolean, aApiToken?: any): P.Promise<any>;
+    static patchJSON(aFile: string, aJsonObject: any, aSyncOrNot?: boolean, aApiToken?: any): P.Promise<any>;
     static deleteRequest(aFile: string, aJsonObject: any, aSyncOrNot?: boolean, aApiToken?: any): P.Promise<any>;
     /**
      * Handles callback from XHR Query and Parse the JSON from query...
