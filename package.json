@@ -1,6 +1,6 @@
 {
   "name": "cortex-toolkit-js-net",
-  "version": "0.0.5",
+  "version": "0.0.10",
   "description": "Network tools from Cortex Toolkit",
   "scripts": {
     "build": "$(npm bin)/tsc",
