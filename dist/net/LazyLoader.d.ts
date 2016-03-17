@@ -48,7 +48,7 @@ export default class LazyLoader {
     */
     static updateJSON(aFile: string, aJsonObject: any, aSyncOrNot?: boolean, aApiToken?: any): P.Promise<any>;
     static patchJSON(aFile: string, aJsonObject: any, aSyncOrNot?: boolean, aApiToken?: any): P.Promise<any>;
-    static deleteRequest(aFile: string, aJsonObject: any, aSyncOrNot?: boolean, aApiToken?: any): P.Promise<any>;
+    static deleteRequest(aFile: string, aJsonObject?: any, aSyncOrNot?: boolean, aApiToken?: any): P.Promise<any>;
     /**
     * Handles callback from XHR Query and Parse the JSON from query...
     *

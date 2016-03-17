@@ -7,6 +7,7 @@
 * @author Mathieu Rhéaume
 *
 */
+"use strict";
 var P = require("./promise");
 /**
 * @classdesc Provides a simple way to use Promise with XHR Callback
@@ -184,7 +185,12 @@ var LazyLoader = (function () {
         xhr.onload = function () {
             deferObject.resolve(xhr.status);
         };
-        xhr.send(JSON.stringify(aJsonObject));
+        if (aJsonObject !== undefined) {
+            xhr.send(JSON.stringify(aJsonObject));
+        }
+        else {
+            xhr.send();
+        }
         return deferObject.promise();
     };
     /**
@@ -231,6 +237,6 @@ var LazyLoader = (function () {
         return xhr;
     };
     return LazyLoader;
-})();
+}());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = LazyLoader;

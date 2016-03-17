@@ -1,3 +1,4 @@
+"use strict";
 /**
  * All information contained herein is, and remains
  * the property of Cortex Media and its suppliers,
@@ -63,6 +64,6 @@ var BrowserDetector = (function () {
     BrowserDetector.IE_REGEX_VERSIONS = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
     BrowserDetector.IE_11_REGEX_VERSIONS = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
     return BrowserDetector;
-})();
+}());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = BrowserDetector;
