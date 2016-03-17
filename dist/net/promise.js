@@ -4,6 +4,7 @@
 
   Project, documentation, and license: https://github.com/pragmatrix/Promise
  */
+"use strict";
 var P;
 (function (P) {
     /**
@@ -160,7 +161,7 @@ var P;
             return this.deferred.then(f);
         };
         return PromiseI;
-    })();
+    }());
     /**
       Implementation of a deferred.
      */
@@ -276,7 +277,7 @@ var P;
             this._rejected = function (_) { };
         };
         return DeferredI;
-    })();
+    }());
     function generator(g) {
         return function () { return iterator(g()); };
     }
@@ -303,7 +304,7 @@ var P;
             });
         };
         return IteratorI;
-    })();
+    }());
     /**
       Iterator functions.
      */

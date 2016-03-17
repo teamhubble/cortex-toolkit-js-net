@@ -58,7 +58,7 @@ export default class LazyLoader {
 			xhr.onerror = function(error:Event) {
 				deferObject.reject(<any>error);
 			};
-			
+
 			xhr.onload = function() {
 
 				if (xhr.response !== null) {
@@ -140,7 +140,7 @@ export default class LazyLoader {
 	public static loadTemplate(aFile: string): P.Promise<any> {
 
 		var deferObject = P.defer<any>(),
-		
+
 		xhr = new XMLHttpRequest();
 
 		xhr.open("GET", aFile, true);
@@ -149,7 +149,7 @@ export default class LazyLoader {
 		};
 
 		xhr.onload = function() {
-		
+
 			if (xhr.response !== null) {
 				deferObject.resolve(xhr.response);
 			} else {
@@ -236,12 +236,12 @@ export default class LazyLoader {
 		};
 
 		xhr.send(JSON.stringify(aJsonObject));
-		
+
 		return deferObject.promise();
 	}
 
 	public static deleteRequest(aFile: string,
-								aJsonObject: any,
+								aJsonObject?: any,
 								aSyncOrNot?: boolean,
 								aApiToken?: any): P.Promise<any> {
 
@@ -256,7 +256,12 @@ export default class LazyLoader {
 			deferObject.resolve(xhr.status);
 		};
 
-		xhr.send(JSON.stringify(aJsonObject));
+        if (aJsonObject !== undefined) {
+		    xhr.send(JSON.stringify(aJsonObject));
+        } else {
+            xhr.send();
+        }
+
 		return deferObject.promise();
 	}
 
